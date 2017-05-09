@@ -8,5 +8,5 @@ If you are using the default callback URL, clicking this [oauth://cprest](oauth:
 
 For more details, see:
 
-* https://twittercommunity.com/t/implementing-web-based-oauth-flow-with-twitter-api-breaks-for-android-nougat-api-25/86821
-* https://developer.chrome.com/multidevice/android/intents#example
+* [https://twittercommunity.com/t/implementing-web-based-oauth-flow-with-twitter-api-breaks-for-android-nougat-api-25/86821](https://twittercommunity.com/t/implementing-web-based-oauth-flow-with-twitter-api-breaks-for-android-nougat-api-25/86821)
+* [https://developer.chrome.com/multidevice/android/intents#example](https://developer.chrome.com/multidevice/android/intents#example)
