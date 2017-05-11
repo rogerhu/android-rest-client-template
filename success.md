@@ -4,7 +4,7 @@ If you see this page, the OAuth callback succeeded.  Because you are possibly us
 
 Switch back to your Android app and try to login again!
 
-If you are using the default callback URL provided in this project, clicking this [oauth://cprest](oauth://cprest) link should close the app.
+If you are using the default callback URL provided in this project, clicking this <a id="oauth">link</a> should close the app.
 
 For more details, see:
 
