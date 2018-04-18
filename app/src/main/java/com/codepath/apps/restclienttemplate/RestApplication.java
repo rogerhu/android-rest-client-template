@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 /*
@@ -14,9 +15,13 @@ import android.content.Context;
  */
 public class RestApplication extends Application {
 
+    MyDatabase database;
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		database = Room.databaseBuilder(this, MyDatabase.class, MyDatabase.DATABASE_NAME).build();
 	}
 
 	public static RestClient getRestClient(Context context) {

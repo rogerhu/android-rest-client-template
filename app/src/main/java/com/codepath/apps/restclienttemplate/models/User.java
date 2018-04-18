@@ -16,21 +16,21 @@ import java.util.List;
  *
  */
 @Entity
-public class SampleModel {
+public class User {
 
 	@PrimaryKey
-	Long id;
+	Long userId;
 
 	// Define table fields
 	@ColumnInfo
 	private String name;
 
-	public SampleModel() {
+	public User() {
 		super();
 	}
 
 	// Parse model from JSON
-	public SampleModel(JSONObject object){
+	public User(JSONObject object){
 		super();
 
 		try {
