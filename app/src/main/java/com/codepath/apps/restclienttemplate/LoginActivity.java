@@ -13,14 +13,6 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 
 	SampleModelDao sampleModelDao;
 
-	AsyncTask<SampleModel, Void, Void> task = new AsyncTask<SampleModel, Void, Void>() {
-		@Override
-		protected Void doInBackground(SampleModel... sampleModels) {
-			sampleModelDao.insertModel(sampleModels);
-			return null;
-		};
-	};
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,7 +23,14 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 
 		sampleModelDao = ((RestApplication) getApplicationContext()).getMyDatabase().sampleModelDao();
 
-		task.execute(sampleModel);
+		// Use in lieu of an AsyncTask
+        ((RestApplication) getApplicationContext()).getMyDatabase().runInTransaction(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        sampleModelDao.insertModel(sampleModel);
+                    }
+                });
 	}
 
 
