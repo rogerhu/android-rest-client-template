@@ -1,8 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.content.Context;
+
+import androidx.room.Room;
 
 import com.facebook.stetho.Stetho;
 
@@ -32,7 +33,7 @@ public class RestApplication extends Application {
     }
 
     public static RestClient getRestClient(Context context) {
-        return (RestClient) RestClient.getInstance(RestClient.class, context);
+        return RestClient.getInstance(context);
     }
 
     public MyDatabase getMyDatabase() {

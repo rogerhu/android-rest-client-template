@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,12 +8,13 @@ import android.view.View;
 
 import com.codepath.apps.restclienttemplate.models.SampleModel;
 import com.codepath.apps.restclienttemplate.models.SampleModelDao;
-import com.codepath.oauth.OAuthLoginActionBarActivity;
+import com.codepath.oauth.OAuth1Client;
+import com.codepath.oauth.OAuthLoginActivity;
 
-public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
+public class LoginActivity extends OAuthLoginActivity {
 
 	SampleModelDao sampleModelDao;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,8 +45,14 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	// i.e Display application "homepage"
 	@Override
 	public void onLoginSuccess() {
+		((RestApplication) this.getApplication()).getRestClient(this).instantiateHttpClientIfAuthenticated();
 		// Intent i = new Intent(this, PhotosActivity.class);
 		// startActivity(i);
+	}
+
+	@Override
+	public OAuth1Client getClient(Context context) {
+		return ((RestApplication) this.getApplication()).getRestClient(this).oAuth1Client;
 	}
 
 	// OAuth authentication flow failed, handle the error
@@ -58,7 +66,12 @@ public class LoginActivity extends OAuthLoginActionBarActivity<RestClient> {
 	// Uses the client to initiate OAuth authorization
 	// This should be tied to a button used to login
 	public void loginToRest(View view) {
-		getClient().connect();
+		getClient(this).connect();
 	}
 
+
+    public void testing(View view) {
+		((RestApplication) this.getApplication()).getRestClient(this).testApi();
+
+	}
 }
